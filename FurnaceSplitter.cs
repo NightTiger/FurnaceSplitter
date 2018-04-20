@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace Oxide.Plugins
 {
-    [Info("Furnace Splitter", "Skipcast", "2.1.3", ResourceId = 2406)]
+    [Info("Furnace Splitter", "Skipcast", "2.1.4", ResourceId = 2406)]
     [Description("Splits up resources in furnaces automatically and shows useful furnace information.")]
     public class FurnaceSplitter : RustPlugin
     {
@@ -396,7 +396,7 @@ namespace Oxide.Plugins
             return returnValue;
         }
 
-        public MoveResult MoveSplitItem(Item item, BaseOven oven, int totalSlots)
+        private MoveResult MoveSplitItem(Item item, BaseOven oven, int totalSlots)
         {
             var container = oven.inventory;
             int invalidItemsCount = container.itemList.Count(slotItem => !IsSlotCompatible(slotItem, oven, item.info));
@@ -1062,7 +1062,7 @@ namespace Oxide.Plugins
 
         #region Exposed plugin methods
 
-        [HookMethod("MoveSplitItem")]
+        /*[HookMethod("MoveSplitItem")]
         public string Hook_MoveSplitItem(Item item, BaseOven oven, int totalSlots)
         {
             MoveResult result = MoveSplitItem(item, oven, totalSlots);
@@ -1074,7 +1074,7 @@ namespace Oxide.Plugins
         {
             var ovenInfo = GetOvenInfo(oven);
             return JObject.FromObject(ovenInfo);
-        }
+        }*/
 
         #endregion Exposed plugin methods
     }
